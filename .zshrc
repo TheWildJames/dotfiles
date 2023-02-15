@@ -1,9 +1,3 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-#################
-# Powerlevel10K #
-#################
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -11,81 +5,121 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-#############
-# Oh-My-Zsh #
-#############
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-#installation via script from github
-#export ZSH="/home/$USER/.oh-my-zsh"
-#installation via pacman
-export ZSH=/usr/share/oh-my-zsh/
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="zsh-theme-powerlevel10k/powerlevel10k.zsh-theme"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
-plugins=(
-  copyfile
-  sudo
-  zsh-interactive-cd
-  )
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-if [ -f $ZSH/oh-my-zsh.sh ]; then
-  source $ZSH/oh-my-zsh.sh
-fi
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-###########
-# Plugins #
-###########
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
-if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
-if [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
-  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
 
-#if [ -f /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.zsh ]; then
-#  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#fi
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
 
-#if [ -f /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.zsh ]; then
-#  source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.zsh
-#fi
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
 
-######################
-# User Configuration #
-######################
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
-# Homebrew Package Manager
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
 
-# thefuck
-eval $(thefuck --alias)
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(sudo
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 ####   ARCOLINUX SETTINGS   ####
-setopt GLOB_DOTS
-setopt SHARE_HISTORY
 
 # If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
-export HISTCONTROL=ignoreboth:erasedups
+#[[ $- != *i* ]] && return
 
 # Make VSCodium the default editor
 export EDITOR='vscodium'
-export VISUAL='nano'
-
-#PS1='[\u@\h \W]\$ '
 
 if [ -d "$HOME/.bin" ] ;
   then PATH="$HOME/.bin:$PATH"
@@ -141,7 +175,7 @@ alias update-brew="brew update"
 alias update-nix="nix-env -u"
 alias update-pipx="pipx upgrade"
 alias update-paru="paru -Syu --noconfirm"
-function_update-all() {
+function_updateall() {
   echo 'All Updates Starting' | lolcat -S 0
   echo 'Pacman Update Started' | lolcat -S 0
   sudo pacman -Syu
@@ -162,7 +196,7 @@ function_update-all() {
   echo 'All Updates Finished!' | lolcat -S 0 
   echo 'Have a nice day!' | lolcat -S 0
 }
-alias update-all="function_update-all"
+#alias update-all="function_updateall"
 alias update-all="topgrade"
 
 #########
@@ -208,14 +242,14 @@ alias depends='function_depends'
 ##########
 # Github #
 ##########
-function_git-zsh() {
+function_gitzsh() {
   cp ~/.zshrc ~/github/DOTS/
   cd ~/github/DOTS/
   git add .zshrc
   git commit -m 'edit zshrc'
   git push
 }
-alias git-zsh="function_git-zsh"
+alias git-zsh="function_gitzsh"
 
 ########
 # list #
@@ -270,6 +304,23 @@ alias sysfailed="systemctl list-units --failed"
 alias jctl="journalctl -p 3 -xb"
 #search content with ripgrep
 alias rg="rg --sort path"
+#readable output
+alias df='df -h'
+#free
+alias free="free -mt"
+#continue download
+alias wget="wget -c"
+#userlist
+alias userlist="cut -d: -f1 /etc/passwd | sort"
+#merge new settings
+alias merge="xrdb -merge ~/.Xresources"
+#ps
+alias psa="ps auxf"
+alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
+#shutdown or reboot
+alias ssn="sudo shutdown now"
+alias sr="sudo reboot"
+
 
 
 ###############
@@ -300,15 +351,6 @@ alias mirror-xx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 20 -
 alias mirror-rate='rate-mirrors --allow-root --disable-comments arch | sudo tee /etc/pacman.d/mirrorlist'
 alias mirror-rate-https='rate-mirrors --allow-root --disable-comments --protocol https arch  | sudo tee /etc/pacman.d/mirrorlist'
 
-######################
-# Youtube Downloader #
-######################
-alias ytd-aac="yt-dlp --extract-audio --audio-format aac "
-alias ytd-best-audio="yt-dlp --extract-audio --audio-format best "
-alias ytd-flac="yt-dlp --extract-audio --audio-format flac "
-alias ytd-mp3="yt-dlp --extract-audio --audio-format mp3 "
-alias ytd-best-video="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 "
-
 #######
 # GPG #
 #######
@@ -324,13 +366,6 @@ alias qk-conkey='killall conky'
 alias qk-polybar='killall polybar'
 alias qk-picom='killall picom'
 
-###########
-# snapper #
-###########
-alias snapchome="sudo snapper -c home create-config /home"
-alias snapli="sudo snapper list"
-alias snapcr="sudo snapper -c root create"
-alias snapch="sudo snapper -c home create"
 
 ##########################
 # Arcolinux Applications #
@@ -396,35 +431,6 @@ alias bak-skel='cp -Rf /etc/skel ~/.skel-backup-$(date +%Y.%m.%d-%H.%M.%S)'
 #in there. They will not be overwritten by skel.
 
 [[ -f ~/.zshrc-personal ]] && . ~/.zshrc-personal
-##########################################################################################################
 
-
-#readable output
-alias df='df -h'
-
-#free
-alias free="free -mt"
-
-#continue download
-alias wget="wget -c"
-#userlist
-alias userlist="cut -d: -f1 /etc/passwd | sort"
-
-#merge new settings
-alias merge="xrdb -merge ~/.Xresources"
-
-#ps
-alias psa="ps auxf"
-alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
-
-#shutdown or reboot
-alias ssn="sudo shutdown now"
-alias sr="sudo reboot"
-
-
-#clear
 # reporting tools - install when not installed
 #neofetch | lolcat
-
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
